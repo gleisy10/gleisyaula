@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Dinâmica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f8ff; /* Cor de fundo clara */
+        }
+        h1 {
+            color: #333; /* Cor do texto do título */
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555; /* Cor do texto do label */
+        }
+        input {
+            padding: 8px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 20px);
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50; /* Cor verde para o botão */
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049; /* Cor do botão ao passar o mouse */
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #e6f7ff; /* Cor de fundo clara para os itens da lista */
+            border: 1px solid #b3d9ff; /* Cor de borda dos itens da lista */
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Adicione itens à lista:</h1>
+    <label for="item">Item:</label>
+    <input type="text" id="item" placeholder="Digite um item" aria-label="Digite um item">
+    <button id="adicionarBtn">Adicionar</button>
+
+    <ul id="lista"></ul>
+
+    <script>
+        const lista = [];
+
+        document.getElementById('adicionarBtn').addEventListener('click', adicionarItem);
+        document.getElementById('item').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                adicionarItem();
+            }
+        });
+
+        function adicionarItem() {
+            const itemInput = document.getElementById('item');
+            const item = itemInput.value.trim(); // Remove espaços em branco
+
+            if (item) {
+                lista.push(item);
+                itemInput.value = ''; // Limpa o campo de entrada
+                exibirLista();
+            }
+        }
+
+        function exibirLista() {
+            const listaUl = document.getElementById('lista');
+            listaUl.innerHTML = '';
+
+            lista.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                listaUl.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>

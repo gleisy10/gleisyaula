@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem de Caracteres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #ffe4e1; /* Cor de fundo rosa claro */
+        }
+        h1 {
+            color: #d6336c; /* Cor do título em rosa escuro */
+        }
+        input {
+            padding: 8px;
+            border: 2px solid #d6336c; /* Borda do campo de entrada em rosa escuro */
+            border-radius: 4px;
+            width: 300px;
+            outline: none; /* Remove a borda padrão ao focar no campo de entrada */
+        }
+        input:focus {
+            border-color: #ff69b4; /* Cor da borda ao focar no campo de entrada */
+            box-shadow: 0 0 5px rgba(255, 105, 180, 0.5); /* Sombra ao redor do campo de entrada */
+        }
+        #contador {
+            margin-left: 10px;
+            font-weight: bold;
+            color: #d6336c; /* Cor do contador em rosa escuro */
+        }
+    </style>
+</head>
+<body>
+    <h1>Contador de Caracteres</h1>
+    <input type="text" id="texto" oninput="contarCaracteres()" placeholder="Digite algo...">
+    <span id="contador">0 caracteres</span>
+
+    <script>
+        function contarCaracteres() {
+            const texto = document.getElementById('texto').value;
+            const contador = document.getElementById('contador');
+
+            // A contagem de caracteres pode ser feita diretamente com a propriedade length
+            const totalCaracteres = texto.length;
+
+            // Atualiza o texto do contador
+            contador.textContent = `${totalCaracteres} caracteres`;
+        }
+    </script>
+</body>
+</html>
